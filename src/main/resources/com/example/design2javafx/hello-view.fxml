@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.design2javafx.HelloController">
+    <children>
+        <ComboBox fx:id="cbxCharType" layoutX="14.0" layoutY="111.0" prefHeight="31.0" prefWidth="163.0" promptText="Horror Character Type" visibleRowCount="3" />
+        <TextField fx:id="txtNameChar" layoutX="21.0" layoutY="14.0" promptText="Enter name of Character" />
+        <ListView fx:id="ltvEditNames" editable="true" layoutX="586.0" layoutY="14.0" prefHeight="300.0" prefWidth="200.0" />
+        <TextField fx:id="txtHP" layoutX="21.0" layoutY="44.0" promptText="Enter health of Character" />
+        <TextField fx:id="txtPW" layoutX="21.0" layoutY="74.0" promptText="Enter power of character" />
+        <Button fx:id="btnCreateChar" layoutX="14.0" layoutY="152.0" mnemonicParsing="false" onAction="#CreateCharacter" prefHeight="41.0" prefWidth="163.0" text="Create Character" />
+      <TextField fx:id="txtDelete" layoutX="21.0" layoutY="301.0" prefHeight="25.0" prefWidth="200.0" promptText="Enter Index of Character to Delete" />
+      <Button fx:id="btnDeleteChar" layoutX="39.0" layoutY="335.0" mnemonicParsing="false" onAction="#DeleteCharacter" prefHeight="41.0" prefWidth="163.0" text="Delete Character" />
+      <Button fx:id="next" layoutX="734.0" layoutY="561.0" mnemonicParsing="false" onAction="#Next" text="Next" />
+    </children>
+</AnchorPane>
