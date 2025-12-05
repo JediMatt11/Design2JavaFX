@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,8 @@ public class SecondSceneController implements Initializable {
     public Button btnVulnerability;
     @FXML
     public Accordion accordion;
+    @FXML
+    public DatePicker datePicker;
 
     public ArrayList<HorrorCharacter> horrorCharacters = new ArrayList<>();
     public Map<HorrorCharacter, VBox> hcBox = new HashMap<>();
@@ -66,6 +69,17 @@ public class SecondSceneController implements Initializable {
         return new TitledPane(horrorCharacter.getName(), vBox);
     }
 
+    public void UpdateDateOfLastRebirth()
+    {
+        HorrorCharacter hc = spinner1.getValue();
+        LocalDate date = datePicker.getValue();
+        if (hc == null || date == null)
+        {
+            return;
+        }
+        hc.setDateOfRebirth(date);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         horrorCharacters = AppState.hcs1;
@@ -79,6 +93,29 @@ public class SecondSceneController implements Initializable {
         for (HorrorCharacter hc : horrorCharacters)
         {
             accordion.getPanes().add(makePane(hc));
+        }
+
+        spinner1.valueProperty().addListener((val, oldVal, newVal) -> {   //when value changes
+            if (spinner1.getValue() != null)
+            {
+                if (newVal.getDateOfRebirth() == null)
+                {
+                    datePicker.setValue(null);
+                    return;
+                }
+                datePicker.setValue(newVal.getDateOfRebirth());
+            }
+        });
+
+
+        if (spinner1.getValue() == horrorCharacters.get(0))                                //when scene opens
+        {
+            if (horrorCharacters.get(0).getDateOfRebirth() == null)
+            {
+                datePicker.setValue(null);
+                return;
+            }
+            datePicker.setValue(horrorCharacters.get(0).getDateOfRebirth());
         }
     }
 

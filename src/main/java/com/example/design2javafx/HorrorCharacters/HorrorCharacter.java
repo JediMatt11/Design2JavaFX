@@ -155,5 +155,18 @@ public abstract class HorrorCharacter implements Serializable
     {
         return canAttack;
     }
+
+    public LocalDate getDateOfRebirth()
+    {
+        return dateOfRebirth;
+    }
+
+    public void setDateOfRebirth(LocalDate newDateOfRebirth)
+    {
+        if (newDateOfRebirth != null)
+        {
+            dateOfRebirth = newDateOfRebirth;
+        }
+    }
 }
 

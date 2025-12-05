@@ -25,6 +25,11 @@ public class Backend {
 
     public void BinaryImport(String binFileName, ArrayList<HorrorCharacter> hc)
     {
+        File file = new File(binFileName);
+        if (!file.exists() || file.length() == 0) {
+            hc.clear();
+            return;
+        }
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(binFileName)))
         {
             hc.clear();
